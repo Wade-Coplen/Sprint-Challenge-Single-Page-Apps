@@ -2,14 +2,19 @@ import React, {useState, useEffect} from "react";
 import Header from "./components/Header.js";
 import axios from 'axios';
 import styled from 'styled-components';
+import SearchForm from './components/SearchForm';
+
 const Card =  styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: justify;
   vertical-align: top;
   font-size: 1rem;
   margin-top: 50px;
-  text-align: center;
+  text-align: left;
   padding: 0px 75px;
-  margin-right: 34px;
+  margin-right: 30%;
+  margin-left: 30%;
   box-shadow: 3px 3px 3px 2px black;
   background-image: linear-gradient(-90deg, #b3643a, rgba(255,0,0,0) );
   
@@ -41,7 +46,7 @@ useEffect(() => {
       
     })}   
     </main>
-    
+    <SearchForm />
     </div>
 
    
