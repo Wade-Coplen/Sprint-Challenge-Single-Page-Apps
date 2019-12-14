@@ -2,7 +2,18 @@ import React, {useState, useEffect} from "react";
 import Header from "./components/Header.js";
 import axios from 'axios';
 import styled from 'styled-components';
-
+const Card =  styled.div`
+  display: flex;
+  vertical-align: top;
+  font-size: 1rem;
+  margin-top: 50px;
+  text-align: center;
+  padding: 0px 75px;
+  margin-right: 34px;
+  box-shadow: 3px 3px 3px 2px black;
+  background-image: linear-gradient(-90deg, #b3643a, rgba(255,0,0,0) );
+  
+`;
 
 export default function App() {
 
@@ -17,18 +28,23 @@ useEffect(() => {
   .catch(err => console.log(err))
 }, [])
 
-  return (
-  <div>
-    <main>
-      <Header />
+  return ( 
+    <div> 
+      <main>
+      <Header /> 
+      {characters.map(character => {
+        return <Card className= 'characterInfo'><h3>Name: {character.name}</h3>
+        <h3>Status: {character.status}</h3>
+        <h3>Species: {character.species}</h3>
+        <h3>Type: {character.type}</h3>
+        </Card>
+      
+    })}   
     </main>
     
-      <div className= "characters-container">
-        <div className= 'characters-info'>
-          <h2>{characters.name}</h2>
-        </div>
-      </div>
-  </div> 
-  );
-  
+    </div>
+
+   
+
+  )
 }
