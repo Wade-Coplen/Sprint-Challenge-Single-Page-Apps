@@ -46,7 +46,7 @@ useEffect(() => {
       
     })}   
     </main>
-    <SearchForm />
+    <SearchForm characters={characters} />
     </div>
 
    

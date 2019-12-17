@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import {Route} from 'react-router-dom';
-// import WelcomePage from './components/WelcomePage';
+
+
 
 export default function SearchForm(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(props.characters);
   useEffect(() => {
     const results = props.characters.filter(character => {
-      return character.toLowerCase().includes(searchTerm.toLowerCase());
+      return character.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
     setSearchResults(results);
@@ -18,8 +19,7 @@ export default function SearchForm(props) {
   };
   console.log("search term", searchTerm);
   return (
-    <section className="search-form">
-     // Add a search form here
+    <section className="search-form">   
      <form>
      <label htmlFor="name">Search:</label>
         <input
@@ -34,12 +34,13 @@ export default function SearchForm(props) {
      <div className="character-list">
         <ul>
           {searchResults.map(character => {
-            return <li key={character}>{character}</li>;
+          return <div> <li>{character.name}</li>
+          <li>{character.status}</li>
+          </div>
           })}
         </ul>
       </div>  
-      {/* <WelcomePage />
-      <Route exact path= '/' component= {WelcomePage} /> */}
+      
   </section>
   );
 }
